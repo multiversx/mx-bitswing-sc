@@ -1,0 +1,60 @@
+{
+    "name": "init",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "``owner_address_________________s1": {
+                    "nonce": "0",
+                    "balance": "0x10000000",
+                    "storage": {},
+                    "code": ""
+                }
+            },
+            "newAddresses": [
+                {
+                    "creatorAddress": "``owner_address_________________s1", 
+                    "creatorNonce": "0",
+                    "newAddress": "``new_bitswing_contract_________s1"
+                }
+            ]
+        },
+        {
+            "step": "scDeploy",
+            "txId": "1",
+            "tx": {
+                "from": "``owner_address_________________s1",
+                "value": "0",
+                "contractCode": "file:../output/bitswing.wasm",
+                "arguments": [],
+                "gasLimit": "0x100000",
+                "gasPrice": "1"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "logs": [],
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "checkState",
+            "accounts": {
+                "``owner_address_________________s1": {
+                    "nonce": "*",
+                    "balance": "*",
+                    "storage": {},
+                    "code": ""
+                },
+                "``new_bitswing_contract_________s1": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "storage": {
+                    },
+                    "code": "file:../output/bitswing.wasm"
+                }
+            }
+        }
+    ]
+}

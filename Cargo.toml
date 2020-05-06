@@ -1,0 +1,30 @@
+[package]
+name = "sc-bitswing-rs"
+version = "0.3.0"
+authors = ["andrei-marinica <andrei.marinica@elrond.com>"]
+edition = "2018"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "bitswing"
+path = "src/lib.rs"
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+
+[dependencies]
+# elrond-wasm = "0.4.0"
+# elrond-wasm-node = "0.4.0"
+# elrond-wasm-derive = "0.4.0"
+
+elrond-wasm = { path = "../elrond-wasm-rs/elrond-wasm" }
+elrond-wasm-node = { path = "../elrond-wasm-rs/elrond-wasm-node" }
+elrond-wasm-derive = { path = "../elrond-wasm-rs/elrond-wasm-derive" }
+
+serde = { version = "1.0", default-features = false, features = ["alloc", "derive"] }
